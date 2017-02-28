@@ -57,6 +57,11 @@ public class HTTPNetworkTransport: NetworkTransport {
     self.session = URLSession(configuration: configuration)
   }
   
+  public init(url: URL, session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
+    self.url = url
+    self.session = session
+  }
+  
   /// Send a GraphQL operation to a server and return a response.
   ///
   /// - Parameters:
