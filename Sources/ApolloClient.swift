@@ -25,7 +25,7 @@ public typealias OperationResultHandler<Operation: GraphQLOperation> = (_ result
 public class ApolloClient {
   public var cacheKeyForObject: CacheKeyForObject?
   
-  let networkTransport: NetworkTransport
+  public let networkTransport: NetworkTransport
   let store: ApolloStore
   
   private let queue: DispatchQueue
