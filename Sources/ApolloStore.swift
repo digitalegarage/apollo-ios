@@ -1,12 +1,5 @@
 func rootKey<Operation: GraphQLOperation>(forOperation operation: Operation) -> CacheKey {
-  switch operation {
-  case is GraphQLQuery:
-    return "QUERY_ROOT"
-  case is GraphQLMutation:
-    return "MUTATION_ROOT"
-  default:
-    preconditionFailure("Unknown operation type")
-  }
+  return Operation.rootKey
 }
 
 protocol ApolloStoreSubscriber: class {
@@ -19,7 +12,7 @@ public final class ApolloStore {
   private var records: RecordSet
   private var subscribers: [ApolloStoreSubscriber] = []
   
-  init(records: RecordSet = RecordSet()) {
+  public init(records: RecordSet = RecordSet()) {
     self.records = records
     queue = DispatchQueue(label: "com.apollographql.ApolloStore", attributes: .concurrent)
   }
