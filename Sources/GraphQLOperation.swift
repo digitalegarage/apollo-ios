@@ -21,7 +21,7 @@ public extension GraphQLOperation {
 public protocol GraphQLQuery: GraphQLOperation {}
 
 extension GraphQLQuery {
-  static var rootKey: String {
+  public static var rootKey: String {
     return "QUERY_ROOT"
   }
 }
@@ -29,7 +29,7 @@ extension GraphQLQuery {
 public protocol GraphQLMutation: GraphQLOperation {}
 
 extension GraphQLMutation {
-  static var rootKey: String {
+  public static var rootKey: String {
     return "MUTATION_ROOT"
   }
 }
