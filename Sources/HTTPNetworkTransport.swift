@@ -79,7 +79,11 @@ public class HTTPNetworkTransport: NetworkTransport {
     
     let body: GraphQLMap = ["query": type(of: operation).queryDocument, "variables": operation.variables]
     request.httpBody = try! serializationFormat.serialize(value: body)
-    
+
+    #if DEBUG
+      print(body)
+    #endif
+
     let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
       if error != nil {
         completionHandler(nil, error)
