@@ -14,8 +14,9 @@ public final class InMemoryNormalizedCache: NormalizedCache {
     return Promise(fulfilled: self.records.merge(records: records))
   }
 
-  public func clear() -> Promise<Void> {
+  public func clear() -> Promise<Int> {
+    let count = records.storage.count
     records.clear()
-    return Promise(fulfilled: ())
+    return Promise(fulfilled: count)
   }
 }

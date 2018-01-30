@@ -11,6 +11,7 @@ public protocol NormalizedCache {
   ///            returned by RecordSet.merge(records:).
   func merge(records: RecordSet) -> Promise<Set<CacheKey>>
 
-  // Clears all records
-  func clear() -> Promise<Void>
+  /// Clears all records
+  /// - returns: A promise that fulfills with the count of keys deleted from cache
+  func clear() -> Promise<Int>
 }

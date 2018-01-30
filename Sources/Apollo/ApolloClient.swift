@@ -66,7 +66,7 @@ public class ApolloClient {
   /// Clears apollo cache
   ///
   /// - Returns: Promise
-  public func clearCache() -> Promise<Void> {
+  public func clearCache() -> Promise<Int> {
     return store.clearCache()
   }
   

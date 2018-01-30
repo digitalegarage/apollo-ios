@@ -33,14 +33,14 @@ public final class ApolloStore {
     }
   }
 
-  func clearCache() -> Promise<Void> {
-    return Promise<Void> { fulfill, reject in
+  func clearCache() -> Promise<Int> {
+    return Promise<Int> { fulfill, reject in
       queue.async(flags: .barrier) {
         self.cacheLock.withWriteLock {
           self.cache.clear()
-        }.andThen {
-          fulfill(())
-        }
+          }.andThen({ (count) in
+            fulfill(count)
+          })
       }
     }
   }
