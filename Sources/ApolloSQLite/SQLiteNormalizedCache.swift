@@ -31,8 +31,8 @@ public final class SQLiteNormalizedCache: NormalizedCache {
     }
   }
 
-  public func clear() -> Promise<Void> {
-    return Promise {
+  public func clear() -> Promise<Int> {
+    return Promise<Int> {
       return try clearRecords()
     }
   }
@@ -82,8 +82,8 @@ public final class SQLiteNormalizedCache: NormalizedCache {
     return try db.prepare(query).map { try parse(row: $0) }
   }
 
-  private func clearRecords() throws {
-    try db.run(records.delete())
+  private func clearRecords() throws -> Int {
+    return try db.run(records.delete())
   }
 
   private func parse(row: Row) throws -> Record {
